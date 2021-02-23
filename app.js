@@ -36,6 +36,13 @@ const render = require("./lib/htmlRenderer");
 function main() {
 	const teams = [];
 
+	function buildHtml() {
+		if (!fs.existsSync(OUTPUT_DIR)) {
+			fs.mkdirSync(OUTPUT_DIR);
+		}
+		fs.writeFileSync(outputPath, render(teams));
+	}
+
 	function buildTeam() {
 		inquirer
 			.prompt([
@@ -111,6 +118,10 @@ function main() {
 
 							buildTeam();
 						});
+				}
+
+				if (choice.typeOfEmployee === "Done") {
+					buildHtml();
 				}
 			});
 	}
