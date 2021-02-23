@@ -46,7 +46,40 @@ function main() {
 					choices: ["Engineer", "Intern", "Done"],
 				},
 			])
-			.then((choice) => {});
+			.then((choice) => {
+				if (choice.typeOfEmployee === "Engineer") {
+					console.log("Enter Engineer Info");
+
+					inquirer
+						.prompt([
+							{
+								type: "input",
+								name: "name",
+								message: "Name:",
+							},
+							{
+								type: "input",
+								name: "email",
+								message: "Email:",
+							},
+							{
+								type: "input",
+								name: "github",
+								message: "Github:",
+							},
+							{
+								type: "input",
+								name: "id",
+								message: "ID:",
+							},
+						])
+						.then(({ name, email, github, id }) => {
+							teams.push(new Engineer(name, id, email, github));
+
+							buildTeam();
+						});
+				}
+			});
 	}
 	console.log("Enter Manager Info");
 	inquirer
