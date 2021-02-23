@@ -18,12 +18,15 @@ This a Command Line application to build HTML page for manager to add employee (
 ## Installation
 
 To run this application use the following command lines:
+<br>
 
 `npm install`
 <br>
 `npm start`
 
-To run test
+To run test:
+<br>
+
 `npm run test`
 
 ## Usage
