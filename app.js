@@ -79,6 +79,39 @@ function main() {
 							buildTeam();
 						});
 				}
+
+				if (choice.typeOfEmployee === "Intern") {
+					console.log("Enter Intern Info");
+
+					inquirer
+						.prompt([
+							{
+								type: "input",
+								name: "name",
+								message: "Name:",
+							},
+							{
+								type: "input",
+								name: "email",
+								message: "Email:",
+							},
+							{
+								type: "input",
+								name: "school",
+								message: "School:",
+							},
+							{
+								type: "input",
+								name: "id",
+								message: "ID:",
+							},
+						])
+						.then(({ name, email, school, id }) => {
+							teams.push(new Intern(name, id, email, school));
+
+							buildTeam();
+						});
+				}
 			});
 	}
 	console.log("Enter Manager Info");
