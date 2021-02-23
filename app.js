@@ -10,7 +10,6 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
@@ -33,3 +32,39 @@ const render = require("./lib/htmlRenderer");
 // for further information. Be sure to test out each class and verify it generates an
 // object with the correct structure and methods. This structure will be crucial in order
 // for the provided `render` function to work! ```
+
+function main() {
+	const teams = [];
+
+	console.log("Enter Manager Info");
+	inquirer
+		.prompt([
+			{
+				type: "input",
+				name: "name",
+				message: "Name:",
+			},
+			{
+				type: "input",
+				name: "email",
+				message: "Email:",
+			},
+			{
+				type: "input",
+				name: "OfficeNumber",
+				message: "Office number:",
+			},
+			{
+				type: "input",
+				name: "id",
+				message: "ID:",
+			},
+		])
+		.then((result) => {
+			teams.push(
+				new Manager(result.name, result.id, result.email, result.OfficeNumber)
+			);
+		});
+}
+
+main();
