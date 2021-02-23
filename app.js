@@ -36,6 +36,18 @@ const render = require("./lib/htmlRenderer");
 function main() {
 	const teams = [];
 
+	function buildTeam() {
+		inquirer
+			.prompt([
+				{
+					type: "list",
+					name: "typeOfEmployee",
+					message: "Which type of member do you want to add?",
+					choices: ["Engineer", "Intern", "Done"],
+				},
+			])
+			.then((choice) => {});
+	}
 	console.log("Enter Manager Info");
 	inquirer
 		.prompt([
@@ -64,6 +76,8 @@ function main() {
 			teams.push(
 				new Manager(result.name, result.id, result.email, result.OfficeNumber)
 			);
+
+			buildTeam();
 		});
 }
 
